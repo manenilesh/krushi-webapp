@@ -1,1 +1,2 @@
-# krushi-webapp
+# flask_krushikart
+flask_krushikart

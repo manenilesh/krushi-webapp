@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code') {
+            steps {
+                echo 'Cloning the Clode'
+                git url: "https://github.com/manenilesh/flask_krushikart.git", branch:"main"
+            }
+        }
+        
+        stage('Build'){
+            steps {
+                echo 'Building the code'
+                sh "docker build -t krushikart-app ."
+            }
+        }
+        
+        stage('Test'){
+            steps {
+                echo 'Testing the code'
+            }
+        }
+        
+        stage('Deploy'){
+            steps {
+                echo 'Deploying the code'
+                sh 'docker run -d -p 5000:5000 krushikart-app'
+            }
+        }
+    }
+}

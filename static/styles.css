@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #2d6a4f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.search-container input[type="text"] {
+    width: 700px;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    /* Green border for KrushiKart theme */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    /* KrushiKart green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-container button:hover {
+    background-color: #45a049;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    background: url('Background_Banner.png') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 500px 40px;
+}
+
+.hero .cta {
+    display: inline-block;
+    background: #40916c;
+    padding: 25px 50px;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.shop-now-button {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.shop-now-button-btn {
+    padding: 18px 36px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.shop-now-button-btn:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+.categories,
+.featured {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.category-grid,
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.category-card,
+.product-card {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+footer {
+    background: #2d6a4f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Plants | KrushiKart</title>
+
+  <link rel="stylesheet" href="/static/plants.css" />
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>KrushiKart - Popular Collection</h1>
+
+    <p>Explore our wide range of healthy, fresh plants for your Farm and garden.</p>
+
+    <div class="cart">
+
+      🛒 Cart: <span id="cart-count">0</span>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="product-grid">
+
+    <div class="product-card">
+
+      <img src="/static/sugarcane-plant.jpeg" alt="Sugarcane Seeds">
+
+      <h2>Sugarcane Seeds</h2>
+
+      <p>₹2.50 Per Seed</p>
+
+      <button onclick="addToCart()">Add to Cart</button>
+
+    </div>
+
+
+
+    <div class="product-card">
+
+      <img src="/static/Atomic-Red-Carrot-Seeds.jpg" alt="Atomic-Red-Carrot-Seeds">
+
+      <h2>Atomic-Red-Carrot-Seeds</h2>
+
+      <p>₹2000 KG</p>
+
+      <button onclick="addToCart()">Add to Cart</button>
+
+    </div>
+
+
+
+    <div class="product-card">
+
+      <img src="/static/Sweet-Potato.jpg" alt="Sweet Potato">
+
+      <h2>Sweet Potato</h2>
+
+      <p>₹1000</p>
+
+      <button onclick="addToCart()">Add to Cart</button>
+
+    </div>
+
+
+
+    <div class="product-card">
+
+      <img src="/static/Marigold-Flower.jpeg" alt="Marigold Flower">
+
+      <h2>Marigold Flower</h2>
+
+      <p>₹5 Per Seed</p>
+
+      <button onclick="addToCart()">Add to Cart</button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="/static/Tomato-Seeds.jpeg" alt="Tomato Seeds">
+  
+        <h2>Tomato Seeds</h2>
+  
+        <p>₹2700 KG</p>
+  
+        <button onclick="addToCart()">Add to Cart</button>
+  
+    </div>
+
+    <div class="product-card">
+
+        <img src="/static/Indoor-Palm.jpg" alt="Indoor Palm">
+  
+        <h2>Indoor Palm</h2>
+  
+        <p>₹1700</p>
+  
+        <button onclick="addToCart()">Add to Cart</button>
+  
+    </div>
+
+  </main>
+
+
+
+  <script>
+
+    let cartCount = 0;
+
+
+
+    function addToCart() {
+
+      cartCount++;
+
+      document.getElementById('cart-count').innerText = cartCount;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
