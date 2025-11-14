@@ -1,13 +1,16 @@
-FROM python:3.11-slim
+FROM ubuntu
 
-WORKDIR /app
+RUN apt update
 
-COPY . .
+RUN apt install -y nginx
 
-RUN pip install flask
+COPY ./default /etc/nginx/sites-available/default
 
-EXPOSE 5000
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-CMD ["python", "app.py"]
+RUN rm -f /etc/nginx/sites-enabled/default.conf || true
 
+EXPOSE 80
+
+CMD [ "nginx", "-g", "daemon off;" ]
 
