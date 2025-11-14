@@ -1,14 +1,6 @@
-FROM ubuntu
+FROM nginx
 
-RUN apt update
-
-RUN apt install -y nginx
-
-COPY ./default /etc/nginx/sites-available/default
-
-RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-RUN rm -f /etc/nginx/sites-enabled/default.conf || true
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 RUN nginx
 
