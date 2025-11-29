@@ -1,31 +1,58 @@
 pipeline {
-    agent any
+    agent { label 'test-agent' }
 
     stages {
-        stage('Code') {
+
+        stage('Clone Repository') {
             steps {
-                echo 'Cloning the Clode'
-                git url: "https://github.com/manenilesh/flask_krushikart.git", branch:"main"
+                echo '📦 Cloning main app repository...'
+                git branch: 'main', url: 'https://github.com/manenilesh/krushi-webapp.git'
             }
         }
         
-        stage('Build'){
+        stage('Build Flask App Image') {
             steps {
-                echo 'Building the code'
-                sh "docker build -t krushikart-app ."
+                echo '⚙️ Building Flask app Docker image...'
+                sh 'docker build -t nileshmane912/ci-cd:flask-01 .'
             }
         }
         
-        stage('Test'){
+        stage('Build Nginx Image') {
             steps {
-                echo 'Testing the code'
+                echo '⚙️ Building Nginx Docker image...'
+                sh '''
+                        cd nginx-web
+                        docker build -t nileshmane912/ci-cd:nginx-01 .
+                        ls -la
+                   '''
+                }
+            }
+            
+        stage('Push Images to Docker Hub') {
+            steps {
+                echo '🚀 Pushing images to Docker Hub...'
+                withCredentials([string(credentialsId: 'dockerhub-token', variable: 'TOKEN')]) {
+                    sh '''
+                        echo $TOKEN | docker login -u nileshmane912 --password-stdin
+                        docker push nileshmane912/ci-cd:flask-01
+                        docker push nileshmane912/ci-cd:nginx-01
+                    '''
+                }
             }
         }
         
-        stage('Deploy'){
+        stage('Pull Images from Docker Hub') {
             steps {
-                echo 'Deploying the code'
-                sh 'docker run -d -p 5000:5000 krushikart-app'
+                echo '🚀 Pulling images from Docker Hub'
+            }
+        }
+        
+        stage('Create container') {
+            steps {
+                echo 'Creating containers'
+                sh 'docker rm -f flask-webapp nginx-webapp'
+                sh 'docker run -d --name nginx-webapp -p 80:80 nileshmane912/ci-cd:nginx-01'
+                sh 'docker run -d --name flask-webapp -p 5000:5000 nileshmane912/ci-cd:flask-01'
             }
         }
     }
